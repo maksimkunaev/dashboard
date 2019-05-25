@@ -14,15 +14,17 @@ class App extends Component {
   @bind
   getInitialRemote() {
     this.props.getData();
+    this.props.getChartsData();
   }
 
   render() {
     const { data: { table, charts }, currentConfig } = this.props;
+
     return (
         <div className={s.app}>
           <div className={s.container}>
-            <Table className={s.item} data={table} config={currentConfig}/>
-            <Charts className={s.item}/>
+            <Table className={s.item} data={table} config={currentConfig} />
+            <Charts className={s.item} data={charts} config={currentConfig} />
           </div>
         </div>
       );

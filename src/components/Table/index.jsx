@@ -73,10 +73,9 @@ export default class Table extends PureComponent {
   ];
   render() {
     const { objects } = this.props.data;
-
     return (
       <div className={cn(styles.table, this.props.className)}>
-        <AntTable dataSource={objects} columns={this.columns} pagination={false} rowKey={(record, index) => {
+        <AntTable size={'small'} dataSource={objects} columns={this.columns} pagination={false} rowKey={(record, index) => {
           return `record.utm_sourcemedium_${index}`
         }}/>
       </div>

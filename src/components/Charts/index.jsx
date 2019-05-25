@@ -5,36 +5,36 @@ import {
 import cn from 'classnames';
 import styles from './Charts.styl';
 
-const data = [
-  {
-    name: '12 aug 2019', pv: 0, amt: 1000,
-  },
-  {
-    name: '12 aug 2019', pv: 3000, amt: 1000,
-  },
-  {
-    name: '12 aug 2019', pv: 2000, amt: 1000,
-  },
-  {
-    name: '12 aug 2019', pv: 2780, amt: 1000,
-  },
-  {
-    name: '12 aug 2019', pv: 1890, amt: 1000,
-  },
-  {
-    name: '12 aug 2019', pv: 2390, amt: 1000,
-  },
-  {
-    name: '12 aug 2019', pv: 3490, amt: 1000,
-  },
-];
-
 export default class Charts extends PureComponent {
   render() {
+    const { data } = this.props;
+    const { indicator } = this.props.config;
+
+
+    const chartData = data && data.analytics && data.analytics[indicator];
+
+    const formatData = chartData && chartData.map(value => {
+      const date = new Date(value[0]);
+
+      const options = {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+      };
+
+      const formatDate = date.toLocaleString("ru", options);
+
+      return {
+        name: formatDate, pv: value[1],
+      }
+    }) || []
+
+    //TODO remove code from component
+
     return (
       <div className={cn(styles.charts, this.props.className)}>
       <ResponsiveContainer width="100%" height={600}>
-          <LineChart data={data}>
+          <LineChart data={formatData}>
             <CartesianGrid stroke="#ccc" />
             <XAxis dataKey="name" />
             <YAxis ticks={[500, 1000,1500, 2000]}/>

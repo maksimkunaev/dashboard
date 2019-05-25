@@ -19,6 +19,11 @@ function getData(state = initialState.data, action) {
             return { ...state, table: { ...action.data, objects: action.data.objects.filter(src => src.utm_sourcemedium) }};
     }
 
+    switch (action.type) {
+        case 'getChartsData':
+            return { ...state, charts: action.data };
+    }
+
     return state;
 }
 
