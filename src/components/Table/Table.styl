@@ -1,1 +1,30 @@
 @import '../../css/base.styl'
+
+.progress {
+  display: flex;
+  width: 100px;
+  height: 20px;
+
+  .wrap {
+    width: 50%;
+  }
+  .red {
+    max-width: 100%;
+    display: none;
+    background: red;
+    width: 0;
+    float: right;
+    height: 100%;
+  }
+  .green {
+    max-width: 100%;
+    display: none;
+    background: green;
+    width: 0;
+    height: 100%;
+  }
+
+  .visible {
+    display: block;
+  }
+}

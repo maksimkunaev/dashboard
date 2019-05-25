@@ -3,34 +3,27 @@ import {connect} from 'react-redux';
 
 import api from '../api';
 const {
-  getAllRemote,
+  getRemoteData,
 } = api;
 
 const mapStateToProps = state => ({
-    tasks: state.tasks,
+    currentConfig: state.currentConfig,
+    data: state.data,
     loadingStatus: state.loadingStatus,
-    isAdmin: state.isAdmin,
-    total:state.total,
 })
 
 const mapDispatchToProps = dispatch => ({
-  getAllTasks: (query) => {
-    getAllRemote(query)
+  getData: () => {
+    getRemoteData()
       .then(data => onSuccess(data, dispatch))
       .catch(error => onError(error, dispatch))
   },
 })
 
 function onSuccess(data, dispatch) {
-  const { tasks, total_task_count } = data;
   dispatch({
-    type: 'updateAll',
-    list: tasks || [],
-  })
-
-  dispatch({
-    type: 'updateTotal',
-    total: total_task_count
+    type: 'getData',
+    data,
   })
 
   dispatch({

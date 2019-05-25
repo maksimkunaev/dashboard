@@ -1,30 +1,22 @@
 import { combineReducers } from 'redux';
 
 const initialState = {
-    isAdmin: false,
-    tasks: [],
-    total: 0,
+    currentConfig: {
+        date_from: '',
+        date_to: '',
+        indicator: 'average_time',
+    },
+    data: {
+        table: {},
+        charts: {},
+    },
     loadingStatus: 'fetching',
 }
 
-function updateTasks(state = initialState.tasks, action) {
+function getData(state = initialState.data, action) {
     switch (action.type) {
-        case 'create':
-            return [
-                ...state,
-                action.data
-            ];
-
-        case 'edit':
-            return state.map(task => {
-                if (task.id === action.id) {
-                    return { ...task, ...action.data};
-                }
-                return task;
-            });
-
-        case 'updateAll':
-            return action.list;
+        case 'getData':
+            return { ...state, table: { ...action.data, objects: action.data.objects.filter(src => src.utm_sourcemedium) }};
     }
 
     return state;
@@ -39,28 +31,17 @@ function getLoadingState(state = initialState.loadingStatus, action) {
     return state;
 }
 
-function authorize(state = initialState.isAdmin, action) {
-    switch (action.type) {
-        case 'signIn':
-            return true;
-    }
+function changeConfig(state = initialState.currentConfig, action) {
+    // switch (action.type) {
+    //     case 'loading':
+    //         return action.loadingStatus;
+    // }
 
     return state;
 }
-
-function updateTotal(state = initialState.total, action) {
-
-    switch (action.type) {
-        case 'updateTotal':
-            return action.total;
-    }
-
-    return state;
-}
-
+window.store = initialState
 export default combineReducers({
-    isAdmin: authorize,
-    tasks: updateTasks,
+    currentConfig: changeConfig,
+    data: getData,
     loadingStatus: getLoadingState,
-    total: updateTotal,
 })

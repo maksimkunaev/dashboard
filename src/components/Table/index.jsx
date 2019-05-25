@@ -3,49 +3,82 @@ import { Table as AntTable, Popover } from 'antd';
 import cn from 'classnames';
 import styles from './Table.styl';
 
-const dataSource = [
-  {
-    source: 'YandexDirekt',
-    total: 2600,
-    diff: 100,
-    key: 'YandexDirekt'
-  },
-  {
-    key: 'Google AdWords',
-    source: 'Google AdWords',
-    total: 2550,
-    diff: 80,
-  },
-];
-
-const columns = [
-  {
-    title: 'Все источники в среднем',
-    dataIndex: 'source',
-    key: 'source',
-  },
-  {
-    title: '',
-    dataIndex: 'total',
-    key: 'total',
-  },
-  {
-    title: '',
-    dataIndex: 'diff',
-    key: 'diff',
-    render: (text, record) =>
-      <Popover content={text} key>
-        {text}
-      </Popover>
-  },
-];
-
-
 export default class Table extends PureComponent {
+  columns = [
+    {
+      title: 'Все источники в среднем',
+      dataIndex: 'utm_sourcemedium',
+      key: 'source',
+    },
+    {
+      title: (text, data) => {
+        const { total } = this.props.data;
+        const { indicator } = this.props.config;
+
+        const time_on_site = total && total.analytics && total.analytics.time_on_site;
+
+        return <div>
+          {time_on_site}
+        </div>
+      },
+      dataIndex: '',
+      key: '',
+      render: text => {
+        const { indicator } = this.props.config;
+
+        const value = text.analytics[indicator];
+        return <div>
+          {value.toString()}
+        </div>
+      }
+    },
+    {
+      title: (text, data) => {
+        const { total } = this.props.data;
+        const { indicator } = this.props.config;
+
+        const average = total && total.analytics && total.analytics[indicator];
+
+        return <div>
+          {average}
+        </div>
+      },
+      dataIndex: '',
+      key: '',
+      render: text => {
+        const { total } = this.props.data;
+        const { indicator } = this.props.config;
+        const value = text.analytics[indicator];
+        const average = total.analytics[indicator];
+
+        const diff = Number(value) - Number(average);
+        const diffPercentage = diff * 100/ average;
+        const isUp = diff > 0;
+        const isDown = diff < 0;
+
+        const width = `${Math.abs(diffPercentage)}%`
+        return  <Popover content={diff.toString()}>
+          <div className={styles.progress}>
+            <div className={styles.wrap}>
+              <div className={cn(styles.red, isDown && styles.visible)} style={{width: width}} />
+            </div>
+            <div className={styles.wrap}>
+              <div className={cn(styles.green, isUp && styles.visible)} style={{width: width}} />
+            </div>
+          </div>
+        </Popover>
+      }
+
+    },
+  ];
   render() {
+    const { objects } = this.props.data;
+
     return (
       <div className={cn(styles.table, this.props.className)}>
-        <AntTable dataSource={dataSource} columns={columns} pagination={false}/>
+        <AntTable dataSource={objects} columns={this.columns} pagination={false} rowKey={(record, index) => {
+          return `record.utm_sourcemedium_${index}`
+        }}/>
       </div>
     );
   }
