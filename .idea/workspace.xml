@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c509ee6-0357-4658-958b-2cb30c145f62" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Charts/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Charts/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/container.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/container.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,11 +24,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+            <state relative-caret-position="600">
+              <caret line="40" column="30" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -120,14 +115,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Charts/index.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="45" column="4" lean-forward="true" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="45">
+              <caret line="3" column="18" lean-forward="true" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -207,10 +199,10 @@
         <option value="$PROJECT_DIR$/src/components/Table/Table.styl" />
         <option value="$PROJECT_DIR$/src/components/container.js" />
         <option value="$PROJECT_DIR$/src/components/Table/index.jsx" />
-        <option value="$PROJECT_DIR$/src/components/index.js" />
         <option value="$PROJECT_DIR$/src/api/index.js" />
         <option value="$PROJECT_DIR$/src/store/index.js" />
         <option value="$PROJECT_DIR$/src/components/Charts/index.jsx" />
+        <option value="$PROJECT_DIR$/src/components/index.js" />
       </list>
     </option>
   </component>
@@ -243,12 +235,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="dashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -260,7 +246,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558828402021" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558828924592" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -308,12 +294,12 @@
       <workItem from="1556962659584" duration="1837000" />
       <workItem from="1557088678357" duration="2504000" />
       <workItem from="1558742315725" duration="16231000" />
-      <workItem from="1558824269277" duration="3536000" />
+      <workItem from="1558824269277" duration="4020000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82569000" />
+    <option name="totallyTimeSpent" value="83053000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -566,16 +552,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -615,10 +591,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Charts/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="45" column="4" lean-forward="true" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
+        <state relative-caret-position="45">
+          <caret line="3" column="18" lean-forward="true" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="30" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
