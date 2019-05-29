@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import api from '../api';
 const {
   getRemoteData,
+  getData,
   getRemoteCharts,
 } = api;
 
@@ -15,12 +16,12 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getData: () => {
-    getRemoteData()
+    getData()
       .then(data => onSuccess(data, dispatch, 'getData'))
       .catch(error => onError(error, dispatch))
   },
   getChartsData: () => {
-    getRemoteCharts()
+    getData(`/sources/stat/chart/sources`)
       .then(data => onSuccess(data, dispatch, 'getChartsData'))
       .catch(error => onError(error, dispatch))
   },

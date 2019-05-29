@@ -50,7 +50,7 @@ function getRemoteCharts(params = {}) {
   // const { date_to = formatDate(), date_from = formatDate(new Date(weekMilliSeconds)) } = params;
   const { date_to = `2018-04-01`, date_from = `2018-02-01` } = params;
 
-  let query = `sources/stat/chart/sources/?project_id=52&offset=0&limit=9999999&date_from=${date_from}&date_to=${date_to}&format=json`;
+  let query = `c/?project_id=52&offset=0&limit=9999999&date_from=${date_from}&date_to=${date_to}&format=json`;
 
   document.cookie = `access_token=${config.access_token}`;
 
@@ -65,15 +65,68 @@ function getRemoteCharts(params = {}) {
     credentials: 'include'
   };
 
+  console.log(`${baseUrl}/${query}`)
   return new Promise((resolve, reject) => {
     fetch(`${baseUrl}/${query}`, options)
       .then(response => {
         return response.json();
       })
       .then(data => {
+        // console.log(data)
         resolve(data);
       })
       .catch(error => {
+        // console.log(error)
+
+        reject(error)
+      })
+  })
+}
+
+
+function getData(query = `/sources/stat/sources`, params = {}) {
+  const { baseUrl } = config;
+  const weekMilliSeconds = +(new Date()) - 7 * 24 * 60 * 60 * 1000;
+
+  let header = new Headers({
+    'Access-Control-Allow-Origin':'*',
+  });
+
+  let options={
+    method: 'GET',
+    mode: 'cors',
+    headers: header,
+    credentials: 'include'
+  };
+
+  const newParams = {
+    project_id: 52,
+    offset: 0,
+    limit: 9999999,
+    date_from: formatDate(new Date(weekMilliSeconds)),
+    date_to: formatDate(),
+    format: `json`,
+  }
+  let queryParams = `?`;
+  for (const key in newParams) {
+    if (newParams.hasOwnProperty(key)) {
+      queryParams += `${key}=${newParams[key]}&`
+    }
+  }
+
+  return new Promise((resolve, reject) => {
+    fetch(`${`https://ae.alytics.ru`}${query}/${queryParams}`, options)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        console.log(data)
+
+        resolve(data);
+      })
+      .catch(error => {
+        console.log(error)
+
         reject(error)
       })
   })
@@ -82,4 +135,5 @@ function getRemoteCharts(params = {}) {
 export default {
   getRemoteData,
   getRemoteCharts,
+  getData,
 }
